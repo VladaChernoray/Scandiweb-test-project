@@ -3,83 +3,67 @@ import {GET_CURRENCY} from "../../query/currency.query";
 import {useQuery} from "@apollo/client";
 import styled from 'styled-components'
 import {Link, NavLink} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-
+const HeaderContainer = styled.header`
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  list-style: none;
+  padding: 30px 0;
+  position: relative;
+`
 const NavbarContainer = styled.nav`
-  .navbar {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    background-color: cadetblue;
-  }
-  
   .nav-menu {
-    display: flex;
-    height: 60px;
-    align-items: center;
-    margin: auto
+    list-style: none;
   }
 
   .nav-item {
-    display: flex;
-    background-color: cadetblue;
-    align-items: center;
-    height: 80px;
+    display: inline-block;
+    padding: 0 30px;
   }
   .nav-links {
-    align-items: center;
     position: relative;
     text-decoration: none;
-    font-size: 18px;
-    padding: 0 10px ;
-  }
-
-  .nav-links:after{
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: center;
+    color: black;
+   }
+  .link-hover:after {
     content: "";
     position: absolute;
-    background-color: aqua;
-    width: 0;
+    background-color: #52D67A;
     height: 3px;
+    width: 0;
     left: 0;
     bottom: -10px;
-    transition: 0.2s;
+    transition: 0.4s;
   }
-  .nav-links:hover:after{
-    width: 100px
+  .link-hover:hover:after {
+    width: 100%;
   }
-
-  
-  @media screen and (max-width: 960px) {
-    .NavbarItems {
-      position: relative;
-    }
-  }
+`
+const LogoContainer = styled.div`
+  position: absolute;
+  left: 50%;
 `
 const DropdownContainer = styled.ul`
-  .dropdown-menu {
-    width: 200px;
-    position: absolute;
-    top: 30px;
-    list-style: none;
-    text-align: start;
-  }
-  
-  .dropdown-menu li {
-    cursor: pointer;
-  }
-  
-  .dropdown-menu.clicked {
-    display: none;
-  }
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+  list-style: none;
+  text-decoration: none;
 `
-
 export class HeaderComponent extends React.Component {
     render() {
         return (
             <div>
-               <Navbar/>
+                <HeaderContainer>
+                    <Navbar/>
+                    <Logo/>
+                    <Dropdown/>
+                </HeaderContainer>
             </div>
         );
     }
@@ -95,52 +79,84 @@ export const Navbar = () => {
     return (
         <NavbarContainer>
             <nav className= 'navbar'>
-                <div>
-                    <ul className={click ? 'nav-menu-active' : 'nav-menu'}>
-                        <li className= 'nav-item'>
-                            <Link to= '/' className='nav-links'>WOMEN</Link>
-                        </li>
-                        <li className= 'nav-item'>
-                            <Link to= '/' className='nav-links'>MEN</Link>
-                        </li>
-                        <li className= 'nav-item'>
-                            <Link to= '/' className='nav-links'>KIDS</Link>
-                        </li>
-                        <div className='menu-icon' onClick={handleClick}></div>
-                        <li className='nav-item'>
-                            <Link to='/currencies' className='nav-link'>
-                                $<FontAwesomeIcon icon="fas fa-angle-down" />
-                                <Dropdown/>
-                            </Link>
-                            {dropdown && <Dropdown />}
-                        </li>
-                    </ul>
-                </div>
+                <ul className={click ? 'nav-menu-active' : 'nav-menu'}>
+                    <li className= 'nav-item'>
+                        <Link to= '/' className='nav-links link-hover'> WOMEN</Link>
+                    </li>
+                    <li className= 'nav-item'>
+                        <Link to= '/' className='nav-links link-hover'>MEN</Link>
+                    </li>
+                    <li className= 'nav-item'>
+                        <Link to= '/' className='nav-links link-hover'>KIDS</Link>
+                    </li>
+                </ul>
             </nav>
         </NavbarContainer>
     )
 }
 
+export const Logo = () => {
+    return(
+        <LogoContainer>
+            <img src="https://img.icons8.com/ios-filled/36/52d67a/shopping-bag.png"/>
+        </LogoContainer>
+    )
+}
 export const Dropdown = () => {
     const { loading, error, data } = useQuery(GET_CURRENCY);
-    const [click, setClick] = useState(false);
-    const handleClick = () => setClick(!click);
+    return(
+        <NavbarContainer>
+            <nav className= 'navbar'>
+                <ul className= 'nav-menu'>
+                    <li className= 'nav-item'>
+                        <Link to= '/currencies' className='nav-links'>
+                            <img src="https://img.icons8.com/ios/24/000000/expand-arrow--v2.png"/>
+                        </Link>
+                        <ul>
+                            <ul>
+                                {data.currencies.map(({ label, symbol }) => {
+                                    return (
+                                        <li>
+                                            {symbol + " " + label}
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </ul>
+                    </li>
+                    <li className= 'nav-item'>
+                        <Link to= '/' className='nav-links'>
+                            <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-shopping-cart-commerce-dreamstale-lineal-dreamstale.png"/>
+                        </Link>
+                    </li>
+                </ul>
+            </nav>
+        </NavbarContainer>
+    )
+}
+
+export const DropdownList = () => {
+    const { loading, error, data } = useQuery(GET_CURRENCY);
+    const [state, setstate] = useState(false);
+    const showDropdown = () => {setstate(true)}
+    const hideDropdown = () => {setstate(false)}
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
     return (
-        <DropdownContainer>
-            <ul onClick={handleClick} className={click ? 'dropdown-menu clicked' : 'dropdown-menu'}>
-                {data.currencies.map(({ label, symbol }) => {
-                    return (
-                        <li>
-                            <Link to='' onClick={() => setClick(false)}>{symbol}{ label}</Link>
-                        </li>
-                    )
-                })}
-            </ul>
-        </DropdownContainer>
-
+        <div className="dropdown">
+            <div className=" dropdown-menu" onMouseEnter={showDropdown()} onMouseLeave={hideDropdown()}>
+                <ul onMouseEnter={showDropdown}>
+                    {data.currencies.map(({ label, symbol }) => {
+                        return (
+                            <li>
+                                {symbol + " " + label}
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
+        </div>
     )
 }
 
