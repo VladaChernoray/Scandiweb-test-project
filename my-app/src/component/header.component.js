@@ -1,8 +1,9 @@
 import React, {Component, useState} from "react";
-import {GET_CURRENCY} from "../../query/currency.query";
+import {GET_CURRENCY} from "../query/currency.query";
 import {useQuery} from "@apollo/client";
 import styled from 'styled-components'
 import {Link, NavLink} from "react-router-dom";
+
 
 const HeaderContainer = styled.header`
   font-family: 'Raleway', sans-serif;
@@ -44,6 +45,18 @@ const NavbarContainer = styled.nav`
   .link-hover:hover:after {
     width: 100%;
   }
+  .dropdown-menu {
+    position: absolute;
+    list-style: none;
+    text-align: start;
+  }
+  .dropdown-menu li{
+      background-color: burlywood;
+    cursor: pointer;
+  }
+  .dropdown-menu.clicked {
+    display: none;
+  }
 `
 const LogoContainer = styled.div`
   position: absolute;
@@ -67,7 +80,6 @@ export class HeaderComponent extends React.Component {
             </div>
         );
     }
-
 }
 
 export const Navbar = () => {
@@ -103,26 +115,47 @@ export const Logo = () => {
     )
 }
 export const Dropdown = () => {
+    const { click, setClick } = useState(false);
+    const handleClick = () => setClick(!click);
+    const {dropdown, setDropdown} = useState(false);
+
     const { loading, error, data } = useQuery(GET_CURRENCY);
+
+    const onMouseEnter = () => {
+        if (window.innerWidth < 960) setDropdown(false);
+        else setDropdown(true)
+    }
+
+    const onMouseLeave = () => {
+        if (window.innerWidth < 960) setDropdown(false);
+        else setDropdown(false)
+    }
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error :(</p>;
     return(
         <NavbarContainer>
             <nav className= 'navbar'>
                 <ul className= 'nav-menu'>
-                    <li className= 'nav-item'>
+                    <li className= 'nav-item'
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}>
                         <Link to= '/currencies' className='nav-links'>
                             <img src="https://img.icons8.com/ios/24/000000/expand-arrow--v2.png"/>
                         </Link>
-                        <ul>
-                            <ul>
-                                {data.currencies.map(({ label, symbol }) => {
+                        {dropdown &&
+                            <ul onClick={handleClick}
+                                className={click ? 'dropdown-menu clicked' : 'dropdown-menu'}>
+                                {data.currencies.map(({label, symbol}) => {
                                     return (
                                         <li>
-                                            {symbol + " " + label}
+                                            <Link to='/' onClick={() => setClick(false)}>
+                                                {symbol + " " + label}
+                                            </Link>
                                         </li>
                                     )
                                 })}
                             </ul>
-                        </ul>
+                        }
                     </li>
                     <li className= 'nav-item'>
                         <Link to= '/' className='nav-links'>
@@ -135,7 +168,7 @@ export const Dropdown = () => {
     )
 }
 
-export const DropdownList = () => {
+/*export const DropdownList = () => {
     const { loading, error, data } = useQuery(GET_CURRENCY);
     const [state, setstate] = useState(false);
     const showDropdown = () => {setstate(true)}
@@ -158,6 +191,6 @@ export const DropdownList = () => {
             </div>
         </div>
     )
-}
+}*/
 
 export default HeaderComponent;
