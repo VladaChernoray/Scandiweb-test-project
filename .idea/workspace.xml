@@ -5,9 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/src/component/header.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/component/header.component.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/src/component/main.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/component/main.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/title.component.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/src/query/product.query.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/query/product.query.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/src/route/KidsMenuPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/src/route/ManMenuPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/src/route/WomenMenuPage.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +68,7 @@
       <workItem from="1660387783234" duration="20361000" />
       <workItem from="1660559721816" duration="8057000" />
       <workItem from="1660568943331" duration="3538000" />
-      <workItem from="1660649944081" duration="9530000" />
+      <workItem from="1660690359146" duration="2816000" />
     </task>
     <servers />
   </component>

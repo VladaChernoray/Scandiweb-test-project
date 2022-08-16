@@ -12,7 +12,7 @@ const HeaderContainer = styled.header`
   justify-content: center;
   text-decoration: none;
   list-style: none;
-  padding: 30px 0;
+  padding: 25px 0;
 `
 const NavbarContainer = styled.nav`
   align-items: start;
@@ -34,10 +34,10 @@ const NavbarContainer = styled.nav`
     content: "";
     position: absolute;
     background-color: #52D67A;
-    height: 3px;
+    height: 2px;
     width: 0;
     left: 0;
-    bottom: -10px;
+    bottom: -30px;
     transition: 0.4s;
   }
   .link-hover:hover:after {
@@ -85,7 +85,6 @@ export class HeaderComponent extends React.Component {
         return (
                 <HeaderContainer>
                     <Navbar/>
-
                     <Dropdown/>
                 </HeaderContainer>
         );

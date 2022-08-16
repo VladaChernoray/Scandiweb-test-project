@@ -24,8 +24,8 @@ const CardContainer = styled.div`
   .card-image{
     object-fit: cover;
     object-position: right;
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
   }
   .card-title{
     text-align: start;
@@ -51,12 +51,18 @@ export const Card = () => {
     return data.categories.map(({ name, products }) => (
         <CardContainer>
             <h2 className='category'>{name}</h2>
-            {products.map(({name, gallery}) => (
+            {products.map(({ name, gallery, prices }) => (
                 <div className='card'>
                     <img className='card-image' src={gallery[0]}/>
                     <p className='card-title'>{name}</p>
+                    {(prices).map(({amount, currency}) => (
+                        <div>
+                            <p>{amount}</p>
+                        </div>
+                    ))}
                 </div>
             ))}
+
         </CardContainer>
     ));
 }
