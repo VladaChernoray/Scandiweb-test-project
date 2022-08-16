@@ -8,30 +8,28 @@ import {Link, NavLink} from "react-router-dom";
 const HeaderContainer = styled.header`
   font-family: 'Raleway', sans-serif;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   list-style: none;
   padding: 30px 0;
-  position: relative;
 `
 const NavbarContainer = styled.nav`
+  align-items: start;
   .nav-menu {
     list-style: none;
   }
-
   .nav-item {
-    display: inline-block;
-    padding: 0 30px;
+    display: inline;
   }
   .nav-links {
     position: relative;
     text-decoration: none;
     font-size: 16px;
-    line-height: 20px;
     text-align: center;
-    vertical-align: center;
+    padding: 0 30px;
     color: black;
-   }
+  }
   .link-hover:after {
     content: "";
     position: absolute;
@@ -45,49 +43,57 @@ const NavbarContainer = styled.nav`
   .link-hover:hover:after {
     width: 100%;
   }
+`
+const LogoContainer = styled.div`
+  text-align: center;
+  .logo-image{
+  }
+`
+const DropdownContainer = styled.ul`
+  font-family: 'Raleway', sans-serif;
+  list-style: none;
+  text-decoration: none;
+  .drop-menu{
+    display: flex;
+    align-items: center;
+  }
+  .dropdown-item {
+    display: inline-flex;
+  }
   .dropdown-menu {
     position: absolute;
     list-style: none;
     text-align: start;
   }
   .dropdown-menu li{
-      background-color: burlywood;
     cursor: pointer;
   }
   .dropdown-menu.clicked {
     display: none;
   }
-`
-const LogoContainer = styled.div`
-  position: absolute;
-  left: 50%;
-`
-const DropdownContainer = styled.ul`
-  font-size: 18px;
-  font-family: 'Raleway', sans-serif;
-  list-style: none;
-  text-decoration: none;
+  .nav-links {
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: center;
+    color: black;
+    padding: 0 30px ;
+  }
 `
 export class HeaderComponent extends React.Component {
     render() {
         return (
-            <div>
                 <HeaderContainer>
                     <Navbar/>
-                    <Logo/>
+
                     <Dropdown/>
                 </HeaderContainer>
-            </div>
         );
     }
 }
 
 export const Navbar = () => {
-        const [click, setClick] = useState(false);
-        const [dropdown, setDropdown] = useState(false);
-
-        const handleClick = () => setClick(!click);
-
+        const [click] = useState(false);
     return (
         <NavbarContainer>
             <nav className= 'navbar'>
@@ -110,7 +116,7 @@ export const Navbar = () => {
 export const Logo = () => {
     return(
         <LogoContainer>
-            <img src="https://img.icons8.com/ios-filled/36/52d67a/shopping-bag.png"/>
+            <img className="logo-image" src="https://img.icons8.com/ios-filled/36/52d67a/shopping-bag.png"/>
         </LogoContainer>
     )
 }
@@ -133,14 +139,14 @@ export const Dropdown = () => {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
     return(
-        <NavbarContainer>
+        <DropdownContainer>
             <nav className= 'navbar'>
-                <ul className= 'nav-menu'>
-                    <li className= 'nav-item'
+                <ul className= 'drop-menu'>
+                    <li className= 'dropdown-item'
                     onMouseEnter={onMouseEnter}
                     onMouseLeave={onMouseLeave}>
                         <Link to= '/currencies' className='nav-links'>
-                            <img src="https://img.icons8.com/ios/24/000000/expand-arrow--v2.png"/>
+                            <img src="https://img.icons8.com/ios/20/000000/expand-arrow--v2.png"/>
                         </Link>
                         {dropdown &&
                             <ul onClick={handleClick}
@@ -157,14 +163,14 @@ export const Dropdown = () => {
                             </ul>
                         }
                     </li>
-                    <li className= 'nav-item'>
+                    <li className= 'dropdown-item'>
                         <Link to= '/' className='nav-links'>
-                            <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-shopping-cart-commerce-dreamstale-lineal-dreamstale.png"/>
+                            <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/24/000000/external-shopping-cart-commerce-dreamstale-lineal-dreamstale.png"/>
                         </Link>
                     </li>
                 </ul>
             </nav>
-        </NavbarContainer>
+        </DropdownContainer>
     )
 }
 
