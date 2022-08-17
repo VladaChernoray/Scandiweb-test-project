@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa0d17ec-b2c4-42e3-ac7f-4f8e6cca97f8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_08_2022_23_37__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_08_2022_23_37__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/src/component/header.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/component/header.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/main.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/component/main.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/route/pdp.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/route/pdp.route.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +63,7 @@
       <workItem from="1660559721816" duration="8057000" />
       <workItem from="1660568943331" duration="3538000" />
       <workItem from="1660690359146" duration="2816000" />
+      <workItem from="1660745867138" duration="1534000" />
     </task>
     <servers />
   </component>
