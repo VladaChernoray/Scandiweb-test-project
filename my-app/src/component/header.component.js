@@ -9,26 +9,22 @@ const HeaderContainer = styled.header`
   font-family: 'Raleway', sans-serif;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-decoration: none;
+  justify-content: space-between;
   list-style: none;
   padding: 25px 0;
 `
 const NavbarContainer = styled.nav`
-  align-items: start;
-  .nav-menu {
-    list-style: none;
-  }
   .nav-item {
     display: inline;
   }
   .nav-links {
     position: relative;
+    font-family: 'Raleway', sans-serif;
+    list-style: none;
     text-decoration: none;
     font-size: 16px;
-    text-align: center;
-    padding: 0 30px;
     color: black;
+    padding: 0 15px;
   }
   .link-hover:after {
     content: "";
@@ -44,22 +40,25 @@ const NavbarContainer = styled.nav`
     width: 100%;
   }
 `
-const LogoContainer = styled.div`
+const LogoContainer = styled.nav`
   text-align: center;
   .logo-image{
   }
 `
-const DropdownContainer = styled.ul`
-  font-family: 'Raleway', sans-serif;
-  list-style: none;
-  text-decoration: none;
-  .drop-menu{
-    display: flex;
-    align-items: center;
+const DropdownContainer = styled.nav`
+
+  .drop-item {
+    display: inline;
   }
-  .dropdown-item {
-    display: inline-flex;
-  }
+  .drop-links {
+      position: relative;
+      text-decoration: none;
+      text-align: center;
+      vertical-align: center;
+      color: black;
+      list-style: none;
+      padding: 0 45px;
+    }
   .dropdown-menu {
     position: absolute;
     list-style: none;
@@ -71,20 +70,14 @@ const DropdownContainer = styled.ul`
   .dropdown-menu.clicked {
     display: none;
   }
-  .nav-links {
-    position: relative;
-    text-decoration: none;
-    text-align: center;
-    vertical-align: center;
-    color: black;
-    padding: 0 30px ;
-  }
+ 
 `
 export class HeaderComponent extends React.Component {
     render() {
         return (
                 <HeaderContainer>
                     <Navbar/>
+                    <Logo/>
                     <Dropdown/>
                 </HeaderContainer>
         );
@@ -138,41 +131,42 @@ export const Dropdown = () => {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
     return(
-        <DropdownContainer>
-            <nav className= 'navbar'>
-                <ul className= 'drop-menu'>
-                    <li className= 'dropdown-item'
-                    onMouseEnter={onMouseEnter}
-                    onMouseLeave={onMouseLeave}>
-                        <Link to= '/currencies' className='nav-links'>
-                            <img src="https://img.icons8.com/ios/20/000000/expand-arrow--v2.png"/>
-                        </Link>
-                        {dropdown &&
-                            <ul onClick={handleClick}
-                                className={click ? 'dropdown-menu clicked' : 'dropdown-menu'}>
-                                {data.currencies.map(({label, symbol}) => {
-                                    return (
-                                        <li>
-                                            <Link to='/' onClick={() => setClick(false)}>
-                                                {symbol + " " + label}
-                                            </Link>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                        }
-                    </li>
-                    <li className= 'dropdown-item'>
-                        <Link to= '/' className='nav-links'>
-                            <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/24/000000/external-shopping-cart-commerce-dreamstale-lineal-dreamstale.png"/>
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
-        </DropdownContainer>
-    )
-}
+            <DropdownContainer>
+                <nav className= 'navbar'>
+                    <ul className= 'drop-menu'>
+                        <li className= 'drop-item'
+                            onMouseEnter={onMouseEnter}
+                            onMouseLeave={onMouseLeave}>
+                            <Link to= '/currencies' className='drop-links'>
+                                <img src="https://img.icons8.com/ios/16/000000/expand-arrow--v2.png"/>
+                            </Link>
+                            {dropdown &&
+                                <ul onClick={handleClick}
+                                    className={click ? 'dropdown-menu clicked' : 'dropdown-menu'}>
+                                    {data.currencies.map(({label, symbol}) => {
+                                        return (
+                                            <li>
+                                                <Link to='/' onClick={() => setClick(false)}>
+                                                    {symbol + " " + label}
+                                                </Link>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            }
+                        </li>
+                        <li className= 'drop-item'>
+                            <Link to= '/' className='drop-links'>
+                                <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/26/000000/external-shopping-cart-commerce-dreamstale-lineal-dreamstale.png"/>
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
+            </DropdownContainer>
+        )
 
+
+}
 /*export const DropdownList = () => {
     const { loading, error, data } = useQuery(GET_CURRENCY);
     const [state, setstate] = useState(false);
