@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {ApolloProvider, ApolloClient, InMemoryCache} from "@apollo/client";
+import {ApolloProvider, ApolloClient, InMemoryCache,} from "@apollo/client";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HeaderComponent from "./component/header.component";
-import MainComponent from "./component/main.component";
+import HeaderComponent from "./component/header/header.component";
+import MainComponent from "./component/main/main.component";
 import CategoryRoute from "./route/category.route";
 import PdpRoute from "./route/pdp.route";
-import CardRoute from "./route/card.route";
+import CartRoute from "./route/cart.route";
 
 const client = new ApolloClient({
     uri: 'http://localhost:4000/',
@@ -21,7 +21,7 @@ root.render(
                 <Routes>
                     <Route path='/category' element={<CategoryRoute/>} />
                     <Route path='/pdp' element={<PdpRoute/>} />
-                    <Route path='/cart' element={<CardRoute/>}/>
+                    <Route path='/cart' element={<CartRoute/>}/>
                 </Routes>
             </BrowserRouter>
         </ApolloProvider>
