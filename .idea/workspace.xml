@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa0d17ec-b2c4-42e3-ac7f-4f8e6cca97f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/my-app/src/component/header/header.component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my-app/src/component/main/main.component.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/header.component.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/main.component.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/navbar.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/component/header/navbar.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/pdp.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/component/main/pdp.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/query/currency.query.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/query/currency.query.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/route/card.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/route/cart.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/route/category.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/route/category.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/route/pdp.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/route/pdp.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/src/component/main/card.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/component/main/card.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/src/query/product.query.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/query/product.query.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +69,7 @@
       <workItem from="1660745867138" duration="1534000" />
       <workItem from="1660906959720" duration="21037000" />
       <workItem from="1660929259949" duration="3839000" />
+      <workItem from="1661001754129" duration="4921000" />
     </task>
     <servers />
   </component>
