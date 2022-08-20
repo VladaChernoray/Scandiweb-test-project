@@ -30,6 +30,10 @@ const Draver = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr;
   }
+  .size-box {
+    display: inline-block;
+    
+  }
   .cart-total {
     display: flex;
     justify-content: space-between;
@@ -72,7 +76,13 @@ export class DraverComponent extends React.Component {
                             <div className='cart-product'>
                                 <div>
                                     <p>Apollo Running Short</p>
-                                    <p>50$</p>
+                                    <b>50$</b>
+                                    <div className='cart-product-size'>
+                                        <div className='size-box'>XS</div>
+                                        <div className='size-box'>S</div>
+                                        <div className='size-box'>M</div>
+                                        <div className='size-box'>L</div>
+                                    </div>
                                 </div>
                                 <div className='cart-product-image'>
                                     <p>IMAGE PLACE</p>

@@ -1,5 +1,5 @@
 import React from "react";
-import {Card} from "./card.component";
+import {Card, Category} from "./card.component";
 
 export class MainComponent extends React.Component {
     render(){

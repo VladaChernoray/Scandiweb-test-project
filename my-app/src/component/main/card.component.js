@@ -51,19 +51,13 @@ export class Card extends React.Component {
                     const { categories } = data;
                     return categories.map(({name, products}) => (<CardContainer>
                         <h1 className='category'>{name}</h1>
-                        {products.map(({name, inStock, gallery, prices}) =>(
+                        {products.map(({name, id, inStock, gallery, prices}) =>(
                             <div className={'card card-active'}>
                                 <img className='card-image' src={gallery[0]}/>
-                                    <Link to='/cart' className='card-link'>
-                                        <p className='card-title'>{name}</p>
-                                        {/*prices.map(({amount, currency}) => (
-                                            <div>
-                                                {currency.map(({label}) =>
-                                                    <p>{label}</p>
-                                                )}
-                                            </div>
-                                        ))*/}
-                                    </Link>
+                                <Link to={`/cart/${id}`} className='card-link'>
+                                    <p>{id}</p>
+                                    <p className='card-title'>{name}</p>
+                                </Link>
                             </div>
                         ))}
                     </CardContainer>))

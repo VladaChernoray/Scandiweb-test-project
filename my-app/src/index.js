@@ -20,8 +20,10 @@ root.render(
             <BrowserRouter>
                 <Routes>
                     <Route path='/category' element={<CategoryRoute/>} />
-                    <Route path='/pdp' element={<PdpRoute/>} />
-                    <Route path='/cart' element={<CartRoute/>}/>
+                    <Route path='/pdp' element={<PdpRoute/>}/>
+                    <Route exact path='/details/:id' render={(props) => (
+                        <CartRoute id={props.match.params.id}/>
+                    )} />
                 </Routes>
             </BrowserRouter>
         </ApolloProvider>
