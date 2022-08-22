@@ -10,7 +10,6 @@ const Draver = styled.div`
   height: 100%;
   position: fixed;
   display: none;
-  
   .drawer{
     position: absolute;
     width: 325px;

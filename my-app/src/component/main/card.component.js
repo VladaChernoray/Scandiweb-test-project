@@ -1,5 +1,5 @@
 import React from "react";
-import {GET_PRODUCT} from "../../query/product.query";
+import {GET_CATEGORY} from "../../query/category.query";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {Query} from "@apollo/client/react/components";
@@ -30,8 +30,8 @@ const CardContainer = styled.div`
   .card-image{
     object-fit: cover;
     object-position: right;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
   }
   .card-link:link{
     text-decoration: none!important;
@@ -45,9 +45,8 @@ const CardContainer = styled.div`
 export class Card extends React.Component {
     render() {
         return(
-            <Query query={ GET_PRODUCT }>
-                {({loading, data}) => {
-                    if (loading) return 'Loading';
+            <Query query={ GET_CATEGORY }>
+                {({data}) => {
                     const { categories } = data;
                     return categories.map(({name, products}) => (<CardContainer>
                         <h1 className='category'>{name}</h1>

@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa0d17ec-b2c4-42e3-ac7f-4f8e6cca97f8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/header/draver.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/component/header/draver.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/main/card.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/component/main/card.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/main/main.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/component/main/main.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/query/product.query.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/query/product.query.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/route/cart.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/route/cart.route.js" afterDir="false" />
-    </list>
+    <list default="true" id="fa0d17ec-b2c4-42e3-ac7f-4f8e6cca97f8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

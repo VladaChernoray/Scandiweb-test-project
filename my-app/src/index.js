@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {ApolloProvider, ApolloClient, InMemoryCache,} from "@apollo/client";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HeaderComponent from "./component/header/header.component";
-import MainComponent from "./component/main/main.component";
 import CategoryRoute from "./route/category.route";
 import PdpRoute from "./route/pdp.route";
 import CartRoute from "./route/cart.route";
@@ -21,9 +19,7 @@ root.render(
                 <Routes>
                     <Route path='/category' element={<CategoryRoute/>} />
                     <Route path='/pdp' element={<PdpRoute/>}/>
-                    <Route exact path='/details/:id' render={(props) => (
-                        <CartRoute id={props.match.params.id}/>
-                    )} />
+                    <Route path="/cart/:id" element={<CartRoute />} />
                 </Routes>
             </BrowserRouter>
         </ApolloProvider>
