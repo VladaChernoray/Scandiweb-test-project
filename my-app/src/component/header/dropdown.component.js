@@ -3,6 +3,7 @@ import {GET_CURRENCY} from "../../query/currency.query";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {Query} from "@apollo/client/react/components";
+import { DriverContext } from "../../context/DrawerContext";
 
 const DropdownContainer = styled.nav`
   .drop-item {
@@ -46,10 +47,9 @@ const DropdownContainer = styled.nav`
   .drop-links:hover .currencies {
     display: none;
   }
-    
-
 `
 export class DropdownComponent extends React.Component{
+  static contextType = DriverContext
     render() {
         return(
             <DropdownContainer>
@@ -70,9 +70,9 @@ export class DropdownComponent extends React.Component{
                                 </ul>
                         </li>
                         <li className= 'drop-item'>
-                            <Link to= '/' className='drop-links'>
+                            <button className='drop-links' onClick={this.context.changeDropDownStatus}>
                                 <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/26/000000/external-shopping-cart-commerce-dreamstale-lineal-dreamstale.png"/>
-                            </Link>
+                            </button>
                         </li>
                     </ul>
                 </nav>

@@ -46,7 +46,8 @@ export class Card extends React.Component {
     render() {
         return(
             <Query query={ GET_CATEGORY }>
-                {({data}) => {
+                {({loading, data}) => {
+                  if (loading) return 'Loading';
                     const { categories } = data;
                     return categories.map(({name, products}) => (<CardContainer>
                         <h1 className='category'>{name}</h1>

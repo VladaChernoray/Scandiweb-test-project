@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { DriverConsumer, DriverContext } from "../../context/DrawerContext";
 
 const Draver = styled.div`
   font-family: 'Raleway', sans-serif;
@@ -9,7 +10,6 @@ const Draver = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
-  display: none;
   .drawer{
     position: absolute;
     width: 325px;
@@ -66,9 +66,12 @@ const Draver = styled.div`
   
 `
 export class DraverComponent extends React.Component {
+  static contextType = DriverContext
     render() {
         return(
-                <Draver>
+          <DriverConsumer>
+            {(props) => props.isDropDownActive && (
+              <Draver>
                     <div className='drawer'>
                         <div className='cart-container'>
                             <b className='cart-title'>My Bag</b>
@@ -98,6 +101,9 @@ export class DraverComponent extends React.Component {
                         </div>
                     </div>
                 </Draver>
+            ) 
+            }
+          </DriverConsumer>   
         )
     }
 }

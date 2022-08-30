@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const GET_PRODUCT = gql`
-   query($id: String!){
-    product(id:$id){
+   query product($id: String!){
+    product(id: $id){
       id
       name
       inStock

@@ -10,24 +10,24 @@ function withParams(Component) {
   }
   
 class CartRoute extends React.Component {
-
+    state = {
+        _id: this.props.params.id
+    }
+   
     render() {
           return(
-            <div>
-                <h1>this.props.params.id</h1>
-                <Query query = {GET_PRODUCT}>
-                {({data}) => {
-                    const { product } = data;
-                    return(
-                        product.map(({id}) => (
-                            <h1>FFF{id}</h1>
-                        ))
+            <Query 
+                query={ GET_PRODUCT }
+                variables={{id: this.state._id}}
+            >
+                {({loading, data}) => {
+                  if (loading) return 'Loading';
+                    const { name, category } = data.product;
+                    return (
+                      <p>{name  + category}</p>
                     )
-                }
-                 
-                }
+                }}
             </Query>
-            </div>
           )
       }
   }
