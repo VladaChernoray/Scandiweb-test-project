@@ -54,7 +54,7 @@ export class Card extends React.Component {
                         {products.map(({name, id, inStock, gallery, prices}) =>(
                             <div className={'card card-active'}>
                                 <img className='card-image' src={gallery[0]}/>
-                                <Link to={`/cart/${id}`} className='card-link'>
+                                <Link to={`/pdp/${id}`} className='card-link'>
                                     <p>{id}</p>
                                     <p className='card-title'>{name}</p>
                                 </Link>

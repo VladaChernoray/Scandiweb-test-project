@@ -1,35 +1,30 @@
-import React, { Component } from "react";
+import React from "react";
 import HeaderComponent from "../component/header/header.component";
-import { useParams } from "react-router-dom";
-import { ProductComponent } from "../component/product.component";
-import { Query } from "@apollo/client/react/components";
-import { GET_PRODUCT } from "../query/product.query";
+import MainComponent from "../component/main/main.component";
+import {DraverComponent} from "../component/header/draver.component";
+import { DraverProvider } from "../context/draver.context";
 
-function withParams(Component) {
-    return props => <Component {...props} params={useParams()} />;
-  }
-  
-class CartRoute extends React.Component {
+export default class CartRoute extends React.Component {
     state = {
-        _id: this.props.params.id
+        isDraverActive: false
     }
-   
+    changeDraverStatus = () => {
+        this.setState(state => ({
+            isDraverActive: !this.state.isDraverActive
+        }))
+    }
+
     render() {
-          return(
-            <Query 
-                query={ GET_PRODUCT }
-                variables={{id: this.state._id}}
-            >
-                {({loading, data}) => {
-                  if (loading) return 'Loading';
-                    const { name, category } = data.product;
-                    return (
-                      <p>{name  + category}</p>
-                    )
-                }}
-            </Query>
-          )
-      }
-  }
-  
-  export default withParams(CartRoute);
+        return(
+            <div>
+                <DraverProvider value={{
+                    isDraverActive: this.state.isDraverActive, 
+                    changeDraverStatus: this.changeDraverStatus}}
+                >
+                    <DraverComponent/>
+                    <HeaderComponent/>
+                </DraverProvider>
+            </div>
+        )
+    }
+}

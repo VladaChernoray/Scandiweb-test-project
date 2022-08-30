@@ -4,7 +4,7 @@ import {ApolloProvider, ApolloClient, InMemoryCache,} from "@apollo/client";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CategoryRoute from "./route/category.route";
 import PdpRoute from "./route/pdp.route";
-import CartRoute from "./route/cart.route";
+import CartRoute from './route/cart.route';
 
 const client = new ApolloClient({
     uri: 'http://localhost:4000/',
@@ -18,8 +18,8 @@ root.render(
             <BrowserRouter>
                 <Routes>
                     <Route path='/category' element={<CategoryRoute/>} />
-                    <Route path='/pdp' element={<PdpRoute/>}/>
-                    <Route path="/cart/:id" element={<CartRoute />} />
+                    <Route path='/cart' element={<CartRoute/>}/>
+                    <Route path="/pdp/:id" element={<PdpRoute />} />
                 </Routes>
             </BrowserRouter>
         </ApolloProvider>

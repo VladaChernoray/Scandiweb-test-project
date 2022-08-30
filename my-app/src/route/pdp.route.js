@@ -1,14 +1,22 @@
 import React from "react";
-import HeaderComponent from "../component/header/header.component";
-import {PdpComponent} from "../component/main/pdp.component";
+import { useParams } from "react-router-dom";
+import ProductComponent from "../component/pdp/product.component";
 
-export default class PdpRoute extends React.Component{
+
+function withParams(Component) {
+    return props => <Component {...props} params={useParams} />;
+  }
+class PdpRoute extends React.Component{
+    constructor(props) {
+        super(props)
+    }
+ 
+
     render() {
         return(
-            <div>
-                <HeaderComponent/>
-                <PdpComponent/>
-            </div>
+            <ProductComponent/>
+
         )
     }
 }
+export default withParams(PdpRoute);
