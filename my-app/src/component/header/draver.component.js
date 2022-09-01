@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { DraverConsumer, DraverContext } from "../../context/draver.context";
+import { DraverConsumer } from "../../context/draver.context";
 
 const Draver = styled.div`
   font-family: 'Raleway', sans-serif;
@@ -66,7 +66,6 @@ const Draver = styled.div`
   
 `
 export class DraverComponent extends React.Component {
-  static contextType = DraverContext
     render() {
         return(
           <DraverConsumer>

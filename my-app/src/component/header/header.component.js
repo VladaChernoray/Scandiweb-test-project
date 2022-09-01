@@ -1,10 +1,6 @@
 import React, {Component, useState} from "react";
-import {GET_CURRENCY} from "../../query/currency.query";
-import {useQuery} from "@apollo/client";
 import styled from 'styled-components'
-import {Link, NavLink} from "react-router-dom";
 import {NavbarComponent} from "./navbar.component";
-// import {DraverComponent} from "./draver.component";
 import {LogoComponent} from "./logo.component";
 import {DropdownComponent} from "./dropdown.component";
 

@@ -1,8 +1,5 @@
 import React from "react";
-import {GET_CURRENCY} from "../../query/currency.query";
-import {Link} from "react-router-dom";
 import styled from "styled-components";
-import {Query} from "@apollo/client/react/components";
 import { DraverContext } from "../../context/draver.context";
 
 const DropdownContainer = styled.nav`

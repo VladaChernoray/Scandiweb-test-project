@@ -1,22 +1,35 @@
+import { Query } from "@apollo/client/react/components";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { DraverComponent } from "../component/header/draver.component";
+import HeaderComponent from "../component/header/header.component";
 import ProductComponent from "../component/pdp/product.component";
+import { GET_PRODUCT } from "../query/product.query";
 
-
-function withParams(Component) {
-    return props => <Component {...props} params={useParams} />;
-  }
 class PdpRoute extends React.Component{
-    constructor(props) {
-        super(props)
-    }
- 
-
     render() {
+        const { id } = this.props.match.params
+
         return(
-            <ProductComponent/>
+            <Query 
+                query={GET_PRODUCT}
+                variables={{ id }}
+            >
+                {({loading, data}) => {
+                  if (loading) return 'Loading';
+                    const { product } = data;
+                    return (
+                        <>
+                        <HeaderComponent/>
+                        <ProductComponent {...product} />
+                        </>
+                      
+                    )
+                }}
+            </Query>
 
         )
     }
 }
-export default withParams(PdpRoute);
+
+export default withRouter(PdpRoute);
