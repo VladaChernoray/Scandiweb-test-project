@@ -1,10 +1,12 @@
 import { Query } from "@apollo/client/react/components";
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { DraverComponent } from "../component/header/draver.component";
 import HeaderComponent from "../component/header/header.component";
-import ProductComponent from "../component/pdp/product.component";
 import { GET_PRODUCT } from "../query/product.query";
+import styled from "styled-components";
+import MainComponent from "../component/main/main.component";
+import ProductComponent from "../component/pdp/product.component";
+import { DraverComponent } from "../component/header/draver.component";
 
 class PdpRoute extends React.Component{
     render() {
@@ -19,11 +21,9 @@ class PdpRoute extends React.Component{
                   if (loading) return 'Loading';
                     const { product } = data;
                     return (
-                        <>
-                        <HeaderComponent/>
-                        <ProductComponent {...product} />
-                        </>
-                      
+                            <div>
+                                 <ProductComponent {...product}/>
+                            </div>
                     )
                 }}
             </Query>
