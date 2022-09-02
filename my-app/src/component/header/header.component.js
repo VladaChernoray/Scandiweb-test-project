@@ -17,6 +17,7 @@ const HeaderContainer = styled.header`
   background-color: white;
 `
 const Container = styled.div`
+  margin: 0;
   position: fixed;
   width: 100%;
 `

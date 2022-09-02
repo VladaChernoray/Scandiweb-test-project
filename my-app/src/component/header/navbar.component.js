@@ -51,6 +51,6 @@ export class NavbarComponent extends React.Component{
                     </ul>
                 </nav>
             </NavbarContainer>
-            )
+        )
     }
 }

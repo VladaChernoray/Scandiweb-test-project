@@ -1,5 +1,5 @@
 import React from "react";
-import {GET_CATEGORY} from "../../query/category.query";
+import {GET_CATEGORIES} from "../../query/categories.query";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {Query} from "@apollo/client/react/components";
@@ -45,7 +45,7 @@ const CardContainer = styled.div`
 export class Card extends React.Component {
     render() {
         return(
-            <Query query={ GET_CATEGORY }>
+            <Query query={ GET_CATEGORIES }>
                 {({loading, data}) => {
                   if (loading) return 'Loading';
                     const { categories } = data;

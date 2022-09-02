@@ -22,6 +22,8 @@ class PdpRoute extends React.Component{
                     const { product } = data;
                     return (
                             <div>
+                                <DraverComponent/>
+                                <HeaderComponent/>
                                  <ProductComponent {...product}/>
                             </div>
                     )
