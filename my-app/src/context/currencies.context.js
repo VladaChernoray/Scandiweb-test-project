@@ -1,5 +1,5 @@
 import React from 'react'
-export const CurenciesContext = React.createContext()
-export const CurenciesProvider = CurenciesContext.Provider
-export const CurenciesConsumer = CurenciesContext.Consumer
+export const CurrenciesContext = React.createContext()
+export const CurrenciesProvider = CurrenciesContext.Provider
+export const CurrenciesConsumer = CurrenciesContext.Consumer
 

@@ -55,7 +55,6 @@ export class Card extends React.Component {
                             <div className={'card card-active'}>
                                 <img className='card-image' src={gallery[0]}/>
                                 <Link to={`/pdp/${id}`} className='card-link'>
-                                    <p>{id}</p>
                                     <p className='card-title'>{name}</p>
                                 </Link>
                             </div>

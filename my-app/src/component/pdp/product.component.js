@@ -94,6 +94,11 @@ width: 350px;
 
 }
 `
+function onAddToCart(item){
+  this.setState({
+    cart: [...this.state.cart, item]
+  })
+}
 
 export default class ProductComponent extends React.Component {
   render() {
@@ -102,6 +107,7 @@ export default class ProductComponent extends React.Component {
     const attributesPrice =  this.props.prices.filter(a => a.label ===  "USD")
     const attributesSize = this.props.attributes.filter(a => a.id === 'Size')
     const attributesSizeName = this.props.attributes.filter(b => b.name === 'Size')
+    
 
     return(
       <PDP>
@@ -138,7 +144,7 @@ export default class ProductComponent extends React.Component {
             <p>{a.label}</p>
           ))}
           <div className='cart-button-container'>
-             <button className='cart-button'>ADD TO CART</button>
+             <button className='cart-button' onClick={this.props.onAddToCart}>ADD TO CART</button>
           </div>  
           <div>
             </div>    

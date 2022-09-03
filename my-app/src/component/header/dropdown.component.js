@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { DraverContext } from "../../context/draver.context";
+import CurrenciesButtonComponent from "./currenciesButton.component";
+import DraverButtonComponent from "./draverButton.component";
 
 const DropdownContainer = styled.nav`
   .drop-item {
@@ -13,7 +14,7 @@ const DropdownContainer = styled.nav`
     vertical-align: center;
     color: black;
     list-style: none;
-    padding: 0 45px;
+    padding: 0 30px;
     font-size: 18px;
   }
   
@@ -23,21 +24,16 @@ const DropdownContainer = styled.nav`
   }
 `
 export class DropdownComponent extends React.Component{
-  static contextType = DraverContext
     render() {
         return(
             <DropdownContainer>
                 <nav className= 'navbar'>
                     <ul className= 'drop-menu'>
                         <li className= 'drop-item'>
-                            <button className='drop-links button' onClick={this.context.changeCurrenciesStatus}>
-                                <img className="cur-icon" src="https://img.icons8.com/ios/16/000000/expand-arrow--v2.png"/>
-                            </button>
+                          <CurrenciesButtonComponent/>
                         </li>
                         <li className= 'drop-item'>
-                            <button className='drop-links button' onClick={this.context.changeDraverStatus}>
-                                <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/26/000000/external-shopping-cart-commerce-dreamstale-lineal-dreamstale.png"/>
-                            </button>
+                          <DraverButtonComponent/>
                         </li>
                     </ul>
                 </nav>

@@ -7,6 +7,7 @@ import styled from "styled-components";
 import MainComponent from "../component/main/main.component";
 import ProductComponent from "../component/pdp/product.component";
 import { DraverComponent } from "../component/header/draver.component";
+import { CurrenciesComponent } from "../component/header/currencies.component";
 
 class PdpRoute extends React.Component{
     render() {
@@ -22,6 +23,7 @@ class PdpRoute extends React.Component{
                     const { product } = data;
                     return (
                             <div>
+                                <CurrenciesComponent/>
                                 <DraverComponent/>
                                 <HeaderComponent/>
                                  <ProductComponent {...product}/>

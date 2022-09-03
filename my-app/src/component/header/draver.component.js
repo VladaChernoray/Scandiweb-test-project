@@ -93,6 +93,13 @@ export class DraverComponent extends React.Component {
                                 <b>Total</b>
                                 <b>200.00$</b>
                             </div>
+                            <div>
+                            <p>
+                        <input className="ip" type="button" value="-" onClick={()=>this.props.decrement(this.props.quantity)}/>
+                        <input className="ip" id="tx-w" type="text" value={this.props.quantity}/>
+                        <input className="ip" type="button" value="+" onClick={()=>this.props.increment(this.props.quantity)}/>
+                </p> 
+                            </div>
                             <div className='cart-button-container'>
                                 <button className='cart-button'>VIEW BAG</button>
                                 <button className='cart-button'>CHECK OUT</button>

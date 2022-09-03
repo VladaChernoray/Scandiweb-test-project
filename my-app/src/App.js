@@ -5,6 +5,7 @@ import CategoryRoute from "./route/category.route";
 import PdpRoute from "./route/pdp.route";
 import CartRoute from './route/cart.route';
 import { DraverProvider } from './context/draver.context';
+import { CurrenciesProvider } from './context/currencies.context';
 
 const client = new ApolloClient({
     uri: 'http://localhost:4000/',
@@ -13,11 +14,18 @@ const client = new ApolloClient({
 
 class App extends React.Component {
     state = {
-        isDraverActive: false
+        isDraverActive: false,
+        isCurrenciesActive: false
+        
     }
     changeDraverStatus = () => {
         this.setState(state => ({
             isDraverActive: !state.isDraverActive
+        }))
+    }
+    changeCurrenciesStatus = () => {
+        this.setState(state => ({
+            isCurrenciesActive: !state.isCurrenciesActive
         }))
     }
 
@@ -29,6 +37,9 @@ class App extends React.Component {
                         isDraverActive: this.state.isDraverActive, 
                         changeDraverStatus: this.changeDraverStatus}}
                     >
+                        <CurrenciesProvider value={{
+                        isCurrenciesActive: this.state.isCurrenciesActive, 
+                        changeCurrenciesStatus: this.changeCurrenciesStatus}}>
                         <BrowserRouter>
                             <Switch>
                                 <Route path='/category'>
@@ -44,6 +55,8 @@ class App extends React.Component {
                                 </Route>
                             </Switch>
                         </BrowserRouter>
+                        </CurrenciesProvider>
+                        
                     </DraverProvider>
                 </ApolloProvider>
             </React.StrictMode>

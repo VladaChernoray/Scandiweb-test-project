@@ -40,13 +40,10 @@ export class NavbarComponent extends React.Component{
                 <nav className= 'navbar'>
                     <ul>
                         <li className= 'nav-item'>
-                            <Link to= '/' className='nav-links link-hover'> WOMEN</Link>
+                            <Link to= '/' className='nav-links link-hover'> TECH</Link>
                         </li>
                         <li className= 'nav-item'>
-                            <Link to= '/' className='nav-links link-hover'>MEN</Link>
-                        </li>
-                        <li className= 'nav-item'>
-                            <Link to= '/' className='nav-links link-hover'>KIDS</Link>
+                            <Link to= '/' className='nav-links link-hover'>CLOTHES</Link>
                         </li>
                     </ul>
                 </nav>

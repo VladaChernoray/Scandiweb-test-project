@@ -2,19 +2,20 @@ import React from "react";
 import { Query } from "@apollo/client/react/components";
 import { GET_CURRENCY } from "../../query/currency.query";
 import styled from "styled-components";
-import { CurenciesConsumer } from "../../context/currencies.context";
+import { CurrenciesConsumer } from "../../context/currencies.context";
 
 const Currencies = styled.div`
 .dropdown-menu {
     font-family: 'Raleway', sans-serif;
-    position: absolute;
+    position: fixed;
     list-style: none;
     font-size: 18px;
     font-weight: 500;
     line-height: 30px;
-    right: 220px;
+    right: 165px;
     top: 70px;
     background-color: white;
+    z-index: 10;
   }
   .currencies {
     word-spacing: 5px;
@@ -33,8 +34,8 @@ const Currencies = styled.div`
 export class CurrenciesComponent extends React.Component {
     render() {
         return(
-            <CurenciesConsumer>
-              {(props) => props.isDraverActive && (
+            <CurrenciesConsumer>
+              {(props) => props.isCurrenciesActive && (
              <Currencies>
                 <ul className='dropdown-menu'>
                 <Query query={ GET_CURRENCY }>
@@ -47,7 +48,7 @@ export class CurrenciesComponent extends React.Component {
                 </ul>
             </Currencies>
               )}
-            </CurenciesConsumer>   
+            </CurrenciesConsumer>   
           )
         
     }
