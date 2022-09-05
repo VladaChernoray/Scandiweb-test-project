@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { DraverConsumer, DraverContext } from "../../context/draver.context";
 
@@ -16,9 +17,13 @@ const Draver = styled.div`
     right: 75px;
     top: 90px;
     border-radius: 0;
-    padding: 32px 16px;
+    padding: 0 16px;
     background-color: white;
     gap: 32px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: 500px;
+    max-height: 50vh;
   }
   .cart-title{
     font-size: 16px;
@@ -40,7 +45,6 @@ const Draver = styled.div`
     font-weight: 500;
     line-height: 18px;
     letter-spacing: 0;
-    padding: 32px 0 ;
   }
   .cart-button-container{
     display: flex;
@@ -77,15 +81,21 @@ const Draver = styled.div`
   display: inline-block;
 }
   
+.cart-button-link {
+  text-decoration: none;
+  color: black;
+}
+.two{
+  color: white;
+}
+
 `
 export class DraverComponent extends React.Component {
   static contextType = DraverContext
   
   
     render() {
-       const products = JSON.parse(localStorage.getItem('products'))
-       
-       console.log(products)
+       const products = JSON.parse(localStorage.getItem('products'))      
 
         return(
           <DraverConsumer>
@@ -133,8 +143,12 @@ export class DraverComponent extends React.Component {
                             </div>
                         </div>))}
                         <div className='cart-button-container'>
-                                <button className='cart-button'>VIEW BAG</button>
-                                <button className='cart-button'>CHECK OUT</button>
+                                <button className='cart-button'>
+                                  <Link  to={`/cart/`} className='cart-button-link'> VIEW BAG</Link>
+                                  </button>
+                                <button className='cart-button'>
+                                  <Link to={`/category/`} className='cart-button-link two'>CHECK OUT</Link>
+                                  </button>
                             </div>
   
                     </div>

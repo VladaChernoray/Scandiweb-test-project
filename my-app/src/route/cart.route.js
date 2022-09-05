@@ -3,6 +3,7 @@ import HeaderComponent from "../component/header/header.component";
 import MainComponent from "../component/main/main.component";
 import {DraverComponent} from "../component/header/draver.component";
 import { DraverProvider } from "../context/draver.context";
+import CartProductComponent from "../component/cart/cartproduct.component";
 
 export default class CartRoute extends React.Component {
 
@@ -25,6 +26,7 @@ export default class CartRoute extends React.Component {
                 >
                     <DraverComponent/>
                     <HeaderComponent/>
+                    <CartProductComponent/>     
                 </DraverProvider>
             </div>
         )
