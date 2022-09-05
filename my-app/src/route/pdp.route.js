@@ -3,16 +3,16 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import HeaderComponent from "../component/header/header.component";
 import { GET_PRODUCT } from "../query/product.query";
-import styled from "styled-components";
-import MainComponent from "../component/main/main.component";
 import ProductComponent from "../component/pdp/product.component";
 import { DraverComponent } from "../component/header/draver.component";
 import { CurrenciesComponent } from "../component/header/currencies.component";
+import { CartContext } from "../context/cart.context";
+import { DraverContext } from "../context/draver.context";
 
 class PdpRoute extends React.Component{
     render() {
-        const { id } = this.props.match.params
 
+        const { id } = this.props.match.params
         return(
             <Query 
                 query={GET_PRODUCT}
@@ -20,11 +20,12 @@ class PdpRoute extends React.Component{
             >
                 {({loading, data}) => {
                   if (loading) return 'Loading';
+                  const { addToCart } = this.props
                     const { product } = data;
                     return (
                             <div>
                                 <CurrenciesComponent/>
-                                <DraverComponent/>
+                                <DraverComponent />
                                 <HeaderComponent/>
                                  <ProductComponent {...product}/>
                             </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { DraverConsumer } from "../../context/draver.context";
+import { DraverConsumer, DraverContext } from "../../context/draver.context";
 
 const Draver = styled.div`
   font-family: 'Raleway', sans-serif;
@@ -27,7 +27,7 @@ const Draver = styled.div`
   }
   .cart-product {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
   }
   .size-box {
     display: inline-block;
@@ -63,48 +63,80 @@ const Draver = styled.div`
     color: white;
     border: none;
   }
+  .cart-image{
+    width: 100px;
+    height: 100px
+  }
+}
+.product-color{
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+.product-color-cont{
+  display: inline-block;
+}
   
 `
 export class DraverComponent extends React.Component {
+  static contextType = DraverContext
+  
+  
     render() {
+       const products = JSON.parse(localStorage.getItem('products'))
+       
+       console.log(products)
+
         return(
           <DraverConsumer>
             {(props) => props.isDraverActive && (
               <Draver>
                     <div className='drawer'>
+                      {products.map(product => (
                         <div className='cart-container'>
-                            <b className='cart-title'>My Bag</b>
+                            <b className='cart-title'>My bag</b>
                             <div className='cart-product'>
                                 <div>
-                                    <p>Apollo Running Short</p>
-                                    <b>50$</b>
+                                    <p className="cart-product-name">{product.name}</p>
                                     <div className='cart-product-size'>
-                                        <div className='size-box'>XS</div>
-                                        <div className='size-box'>S</div>
-                                        <div className='size-box'>M</div>
-                                        <div className='size-box'>L</div>
+                                    {product.attributes.map(a => (
+                                      a.items.map(i => (
+                                      <button className="attributes-size" id="size">{i.value}</button>))))}
+                                    </div>
+                                    <div className="cart-product-color">
+                                    {product.attributes.map(a => ( a.items.map(i => (
+                                    <div className="product-color-cont">
+                                      <div style={{backgroundColor: i.value}} className="product-color"></div>
+                                      </div>
+              ))
+            ))}
                                     </div>
                                 </div>
+                              
+                
+                                <div>
+                                <input className="cart-quantity" type="button" value="-" onClick={()=>this.props.decrement(this.props.quantity)}/>
+                                <div>{this.props.quantity}</div>
+                                <input className="cart-quantity" type="button" value="+" onClick={()=>this.props.increment(this.props.quantity)}/>
+                                </div>
                                 <div className='cart-product-image'>
-                                    <p>IMAGE PLACE</p>
+                                  <img className="cart-image" src={product.gallery[0]}/>
                                 </div>
                             </div>
                             <div className='cart-total'>
-                                <b>Total</b>
-                                <b>200.00$</b>
+                                <b></b>
+                                <b></b>
                             </div>
+                          
                             <div>
-                            <p>
-                        <input className="ip" type="button" value="-" onClick={()=>this.props.decrement(this.props.quantity)}/>
-                        <input className="ip" id="tx-w" type="text" value={this.props.quantity}/>
-                        <input className="ip" type="button" value="+" onClick={()=>this.props.increment(this.props.quantity)}/>
-                </p> 
+   
                             </div>
-                            <div className='cart-button-container'>
+                        </div>))}
+                        <div className='cart-button-container'>
                                 <button className='cart-button'>VIEW BAG</button>
                                 <button className='cart-button'>CHECK OUT</button>
                             </div>
-                        </div>
+  
                     </div>
                 </Draver>
             ) 

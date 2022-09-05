@@ -15,19 +15,29 @@ const client = new ApolloClient({
 class App extends React.Component {
     state = {
         isDraverActive: false,
-        isCurrenciesActive: false
-        
+        isCurrenciesActive: false,
+        cart: [],
     }
+
     changeDraverStatus = () => {
         this.setState(state => ({
             isDraverActive: !state.isDraverActive
         }))
     }
+
     changeCurrenciesStatus = () => {
         this.setState(state => ({
             isCurrenciesActive: !state.isCurrenciesActive
         }))
     }
+    changeProductStatus = (id) => {
+        const {products, cart} =this.state;
+        const data = products.filter(product =>{
+            return this.props.id === id
+        })
+        console.log(data)
+    }
+
 
     render() {
         return (
@@ -35,7 +45,9 @@ class App extends React.Component {
                 <ApolloProvider client={client}>
                     <DraverProvider value={{
                         isDraverActive: this.state.isDraverActive, 
-                        changeDraverStatus: this.changeDraverStatus}}
+                        changeDraverStatus: this.changeDraverStatus,    
+                        changeProductStatus: this.changeProductStatus
+                    }}
                     >
                         <CurrenciesProvider value={{
                         isCurrenciesActive: this.state.isCurrenciesActive, 

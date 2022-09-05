@@ -5,6 +5,8 @@ import {DraverComponent} from "../component/header/draver.component";
 import { DraverProvider } from "../context/draver.context";
 
 export default class CartRoute extends React.Component {
+
+
     state = {
         isDraverActive: false
     }

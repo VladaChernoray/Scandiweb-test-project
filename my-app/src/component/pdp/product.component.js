@@ -1,6 +1,8 @@
-import React from "react";
+import React, { createContext } from "react";
 import styled from "styled-components";
 import innerText from "jsx-inner-text";
+import { CartContext } from "../../context/cart.context";
+import { DraverContext } from "../../context/draver.context";
 
 const PDP = styled.div`
 display: block;
@@ -94,21 +96,34 @@ width: 350px;
 
 }
 `
-function onAddToCart(item){
-  this.setState({
-    cart: [...this.state.cart, item]
-  })
-}
+
 
 export default class ProductComponent extends React.Component {
+
+  addToCart(product) {
+    console.log(product)
+
+    let products = [];
+    if(localStorage.getItem('products')) {
+        products = JSON.parse(localStorage.getItem('products'));
+    }
+
+    products.push(product);
+    
+    localStorage.setItem('products', JSON.stringify(products));
+    
+    console.log(localStorage.getItem('products'))
+  }
+
   render() {
+    const product = this.props
+
     const attributesName = this.props.attributes.filter(b => b.name === 'Color')
     const attributesColor = this.props.attributes.filter(a => a.id === 'Color')
     const attributesPrice =  this.props.prices.filter(a => a.label ===  "USD")
     const attributesSize = this.props.attributes.filter(a => a.id === 'Size')
     const attributesSizeName = this.props.attributes.filter(b => b.name === 'Size')
-    
-
+      
     return(
       <PDP>
         <div className="container">
@@ -144,7 +159,7 @@ export default class ProductComponent extends React.Component {
             <p>{a.label}</p>
           ))}
           <div className='cart-button-container'>
-             <button className='cart-button' onClick={this.props.onAddToCart}>ADD TO CART</button>
+             <button className='cart-button' onClick = {() => this.addToCart(product)}>ADD TO CART</button>
           </div>  
           <div>
             </div>    
